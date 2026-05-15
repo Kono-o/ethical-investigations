@@ -26,11 +26,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install mdBook
-        run: |
-          cargo install mdbook
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
 
-      - name: Build book
+      - name: Install mdBook
+        run: cargo install mdbook
+
+      - name: Build
         run: mdbook build
 
       - name: Setup Pages
@@ -44,4 +46,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
